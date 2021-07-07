@@ -14,6 +14,7 @@ class ProjectHelper:
 
     def create(self, name):
         wd = self.app.wd
+        self.open_projects_page()
         wd.find_element_by_xpath(u"//input[@value='создать новый проект']").click()
         wd.find_element_by_id("project-name").click()
         wd.find_element_by_id("project-name").clear()
@@ -24,4 +25,9 @@ class ProjectHelper:
         symbols = string.ascii_letters + string.digits
         return "group" + "".join([random.choice(symbols) for i in range(random.randrange(10))])
 
-
+    def delete(self, name):
+        wd = self.app.wd
+        self.open_projects_page()
+        wd.find_element_by_link_text(name).click()
+        wd.find_element_by_xpath(u"//input[@value='Удалить проект']").click()
+        wd.find_element_by_xpath(u"//input[@value='Удалить проект']").click()
