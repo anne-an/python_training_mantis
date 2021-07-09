@@ -19,7 +19,6 @@ class MailHelper:
                     msglines = pop.retr(n+1)[1]
                     msgtext = "\n".join(map(lambda x: x.decode('utf-8'), msglines))
                     msg = email.message_from_string(msgtext)
-                    print(msg)
                     if msg.get("Subject").startswith(subject):
                         pop.dele(n+1)
                         pop.quit()
